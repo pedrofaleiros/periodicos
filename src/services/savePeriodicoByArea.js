@@ -14,30 +14,29 @@ async function savePeriodicoByArea(areaName, page) {
   for (var i = 0; i < 30; i++) {
     const $conteudo = $(`#conteudo-${i}`);
 
-    if ($conteudo.length === 0) {
+    if ($conteudo.length > 0) {
+      $conteudo.find("h6").each(async (index, element) => {
+        const titulo = $(element).find("a.titulo-busca").text();
+        const link = $(element).find("a.titulo-busca").attr("href");
+
+        const list = link.split("=");
+        const id = list[list.length - 1];
+
+        const textoRevisado = $conteudo
+          .find("p.peerreviewed span.ml-2 b")
+          .text()
+          .trim();
+        var revisado = false;
+        if (textoRevisado) {
+          revisado = true;
+        }
+
+        // console.log(`${i + 1} -> ${id} : ${titulo}`);
+        await createPeriodico(id, titulo, areaName, null, null, revisado);
+      });
+    } else {
       console.log(`\t${i} - Nenhum dado encontrado`);
-      return;
     }
-
-    $conteudo.find("h6").each(async (index, element) => {
-      const titulo = $(element).find("a.titulo-busca").text();
-      const link = $(element).find("a.titulo-busca").attr("href");
-
-      const list = link.split("=");
-      const id = list[list.length - 1];
-
-      const textoRevisado = $conteudo
-        .find("p.peerreviewed span.ml-2 b")
-        .text()
-        .trim();
-      var revisado = false;
-      if (textoRevisado) {
-        revisado = true;
-      }
-
-      // console.log(`${i + 1} -> ${id} : ${titulo}`);
-      await createPeriodico(id, titulo, areaName, null, null, revisado);
-    });
   }
 }
 
@@ -54,5 +53,17 @@ async function main(index) {
   }
 }
 
-const AREA_SELECTED = 2;
-main(AREA_SELECTED);
+// const AREA_SELECTED = 4;
+// main(AREA_SELECTED);
+
+const args = process.argv.slice(2);
+if (args.length > 0) {
+  const number = parseInt(args[0], 10);
+  if (number >= 0 && number < areas.length) {
+    main(number);
+  } else {
+    console.log("Número inválido");
+  }
+} else {
+  console.log("Informe o número");
+}

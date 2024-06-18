@@ -1,6 +1,8 @@
 const fs = require("fs");
 const { getPeriodicos } = require("./repository");
 
+const fileName = "dados.csv";
+
 async function main() {
   const data = await getPeriodicos();
 
@@ -16,9 +18,9 @@ async function main() {
     content += `${el.id};"${titulo}";${el.issn};"${area}";"${linguagem}";${revisado};\n`;
   }
 
-  fs.writeFile("dados.csv", content, function (err) {
+  fs.writeFile(fileName, content, function (err) {
     if (err) throw err;
-    console.log("Saved!");
+    console.log(`Salvo com sucesso em: ${fileName}`);
   });
 }
 

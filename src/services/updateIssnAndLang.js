@@ -55,5 +55,18 @@ async function main(index) {
   }
 }
 
-const AREA_SELECTED = 0;
-main(AREA_SELECTED);
+// const AREA_SELECTED = 0;
+// main(AREA_SELECTED);
+
+const args = process.argv.slice(2);
+if (args.length > 0) {
+  const number = parseInt(args[0], 10);
+  if (number >= 0 && number < areas.length) {
+    console.log(`ISSN e Linguagem - ${areas[number].name}`);
+    main(number);
+  } else {
+    console.log("Número inválido");
+  }
+} else {
+  console.log("Informe o número");
+}
