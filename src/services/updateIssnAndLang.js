@@ -14,7 +14,7 @@ async function updateIssnAndLang(id) {
     return;
   }
 
-  if (find.linguagem === null || find.issn === null) {
+  if (find.linguagem === null && find.issn === null) {
     const url = `${BASE_URL}?task=detalhes&source=resources&id=${id}`;
 
     const response = await axios.get(url, { headers });

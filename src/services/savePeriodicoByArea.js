@@ -54,5 +54,5 @@ async function main(index) {
   }
 }
 
-const AREA_SELECTED = 1;
+const AREA_SELECTED = 2;
 main(AREA_SELECTED);
