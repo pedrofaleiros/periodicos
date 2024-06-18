@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    restart: always
+    hostname: postgres
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    volumes:
+      - periodicos:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '0.5GB'
+          
+volumes:
+  periodicos:

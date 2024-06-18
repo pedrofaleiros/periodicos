@@ -1,0 +1,21 @@
+{
+  "name": "periodicos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "area": "node src/services/savePeriodicoByArea.js",
+    "page": "node src/services/updateIssnAndLang.js",
+    "show": "node src/services/mostraPeriodicos.js",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.15.0",
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12",
+    "prisma": "^5.15.0"
+  }
+}
