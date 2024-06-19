@@ -6,10 +6,11 @@
   "scripts": {
     "area": "node src/services/savePeriodicoByArea.js",
     "detail": "node src/services/updateIssnAndLang.js",
+    "detail-loop": "node src/services/updateXtoY.js",
     "show": "node src/services/mostraPeriodicos.js",
     "dados": "node src/index.js",
-    "count":"node src/services/countByArea.js",
-    "area-loop":"node src/services/saveXtoYByArea.js"
+    "count": "node src/services/countByArea.js",
+    "area-loop": "node src/services/saveXtoYByArea.js"
   },
   "author": "",
   "license": "ISC",

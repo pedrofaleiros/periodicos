@@ -44,7 +44,7 @@ async function main(index1, index2) {
   for (var i = index1; i <= index2; i++) {
     const area = areas[i];
     const pages = Math.ceil(area.len / 30);
-    console.log(`\n${i} - Buscando ${area.name}`);
+    console.log(`\n${i} - Buscando ${area.name} - total: ${area.len}`);
 
     for (var j = 1; j <= pages; j++) {
       console.time("Duration");
