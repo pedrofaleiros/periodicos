@@ -63,8 +63,8 @@ if (args.length > 0) {
   if (
     number >= 0 &&
     number < areas.length &&
-    number >= 0 &&
-    number < areas.length
+    number2 >= 0 &&
+    number2 < areas.length
   ) {
     main(number, number2);
   } else {
