@@ -20,8 +20,8 @@ ctrl + C --> parar
 
 git pull - --> Recarragar git
 
+---
+
 git add . --> add arquivo
-
 git commit -m "Commit" --> Vazer commit
-
 git push --> enviar por repositório
