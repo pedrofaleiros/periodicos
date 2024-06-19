@@ -12,7 +12,7 @@ const areas = [
   { name: "Linguística", len: 900 },
   { name: "Engenharia Química", len: 847 },
   { name: "Antropologia", len: 840 },
-  { name: "Engenharia de Materiais", len: 756 },
+  { name: "Engenharia de Materiais e Metalúrgica", len: 756 },
   { name: "Matemática", len: 756 },
   { name: "Psiquiatria", len: 724 },
   { name: "Saúde Coletiva", len: 668 },
