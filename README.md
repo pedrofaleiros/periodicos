@@ -16,6 +16,8 @@ npm run show -- mostrar
 
 npm run area 0 --> buscar 30 por 30 de cada area
 
+npm run area-loop 0 5 --> buscar 30 por 30 de cada area, da area X ate a area Y
+
 npm run detail 0 --> buscar pagina individual de cada periodico
 
 npm run dados --> gera arquivo .csv
