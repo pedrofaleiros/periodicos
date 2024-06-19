@@ -8,7 +8,8 @@
     "detail": "node src/services/updateIssnAndLang.js",
     "show": "node src/services/mostraPeriodicos.js",
     "dados": "node src/index.js",
-    "count":"node src/services/countByArea.js"
+    "count":"node src/services/countByArea.js",
+    "area-loop":"node src/services/saveXtoYByArea.js"
   },
   "author": "",
   "license": "ISC",
