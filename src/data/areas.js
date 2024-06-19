@@ -1,4 +1,4 @@
-const areas = [
+export default areas = [
   { name: "Sociologia", len: 1541 },
   { name: "Administração", len: 1434 },
   { name: "Educação", len: 1363 },
@@ -50,7 +50,7 @@ const areas = [
   { name: "Gastroenterologia", len: 282 },
   { name: "Arquitetura e Urbanismo", len: 281 },
   { name: "Nefrologia", len: 274 },
-  { name: "Ginecologia e Obstetría", len: 272 },
+  { name: "Ginecologia e Obstetrícia", len: 272 },
   { name: "Microbiologia", len: 272 },
   { name: "Endocrinologia", len: 262 },
   { name: "Ciência da Informação", len: 261 },
@@ -98,25 +98,7 @@ const areas = [
   { name: "Serviço Social", len: 74 },
   { name: "Bioquímica", len: 73 },
   { name: "Imunologia", len: 73 },
-  { name: "Pediatria", len: 6 },
+  { name: "Pediatria", len: 67 },
 ];
 
-module.exports = areas;
-
-/* const $res = $("#resultados");
-  const numero = $res
-    .find("p")
-    .contents()
-    .filter(function () {
-      return this.nodeType === 3;
-    })
-    .text()
-    .trim();
-
-  console.log("Area: ", area);
-  console.log("Total: ", numero); */
-
-/* const pagination = $res.find("div.col-sm-12 p span.resultspage");
-  const aux = pagination.text().trim().split(" ");
-  console.log(aux[2]);
-  console.log(aux[4]); */
+// module.exports = areas;

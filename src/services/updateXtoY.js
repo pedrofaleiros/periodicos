@@ -50,8 +50,8 @@ async function main(index1, index2) {
       var aux = periodicos[j];
 
       console.time("Duration");
+      console.log(`\n${j}/${periodicos.length} - Buscando "${aux.id}"`);
       await updateIssnAndLang(periodicos[j].id).then(() => {
-        console.log(`\n${j}/${periodicos.length} - Buscando "${aux.id}"`);
         console.timeEnd("Duration");
       });
     }

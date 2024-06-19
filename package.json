@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "area": "node src/services/savePeriodicoByArea.js",
     "detail": "node src/services/updateIssnAndLang.js",
@@ -10,7 +11,12 @@
     "show": "node src/services/mostraPeriodicos.js",
     "dados": "node src/index.js",
     "count": "node src/services/countByArea.js",
-    "area-loop": "node src/services/saveXtoYByArea.js"
+    "area-loop": "node src/services/saveXtoYByArea.js",
+    "area-update": "node src/Area/updateAreas.js",
+    "area-list": "node src/Area/listAreas.js",
+    "per-update": "node src/Periodico/savePeriodicosByArea.js",
+    "per-detail": "node src/Periodico/detailPeriodicosByArea.js",
+    "per-list": "node src/Periodico/listPeriodicos.js"
   },
   "author": "",
   "license": "ISC",

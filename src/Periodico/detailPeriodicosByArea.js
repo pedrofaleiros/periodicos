@@ -1,15 +1,15 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
-const areas = require("../data/areas");
-const { BASE_URL, headers } = require("../data/request");
-const {
-  updateLinguagemAndISSN,
-  getPeriodicosByArea,
-  findPeriodico,
-} = require("../repository");
+import { BASE_URL, headers } from "../data/request.js";
+import axios from "axios";
+import * as cheerio from "cheerio";
+import { listAreas } from "../repository/AreaRepository.js";
+import {
+  findPeriodicoById,
+  listPeriodicosByArea,
+  updatePeriodicoLangAndISSN,
+} from "../repository/PeriodicoRepository.js";
 
-async function updateIssnAndLang(id) {
-  const find = await findPeriodico(id);
+async function scrap(id) {
+  const find = await findPeriodicoById(id);
   if (find === null) {
     return;
   }
@@ -36,37 +36,40 @@ async function updateIssnAndLang(id) {
     if (issn) {
       updateISSN = issn;
     }
-    await updateLinguagemAndISSN(id, updateLANG, updateISSN);
+
+    // console.log(`${id}; ${updateLANG}; ${updateISSN}`);
+    await updatePeriodicoLangAndISSN(id, updateISSN, updateLANG);
   }
 }
 
 async function main(index) {
+  const areas = await listAreas();
+
+  if (index < 0 || index >= areas.length) {
+    console.log("Numero inválido");
+    return;
+  }
+
   const area = areas[index];
-  const periodicos = await getPeriodicosByArea(area.name);
+  console.log(`ISSN e Linguagem - ${area.nome} - Total: ${area.total}`);
+
+  const periodicos = await listPeriodicosByArea(area.nome);
 
   for (var i = 0; i < periodicos.length; i++) {
     var aux = periodicos[i];
 
+    // console.log(`${i}; ${aux.id}; ${aux.titulo}`);
     console.time("Duration");
     console.log(`\n${i}/${periodicos.length} - Buscando "${aux.id}"`);
-    await updateIssnAndLang(periodicos[i].id).then(() => {
-      console.timeEnd("Duration");
-    });
+    await scrap(periodicos[i].id);
+    console.timeEnd("Duration");
   }
 }
-
-// const AREA_SELECTED = 0;
-// main(AREA_SELECTED);
 
 const args = process.argv.slice(2);
 if (args.length > 0) {
   const number = parseInt(args[0], 10);
-  if (number >= 0 && number < areas.length) {
-    console.log(`ISSN e Linguagem - ${areas[number].name}`);
-    main(number);
-  } else {
-    console.log("Número inválido");
-  }
+  main(number);
 } else {
   console.log("Informe o número");
 }

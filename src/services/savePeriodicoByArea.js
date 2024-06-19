@@ -31,7 +31,7 @@ async function savePeriodicoByArea(areaName, page) {
           revisado = true;
         }
 
-        // console.log(`${i + 1} -> ${id} : ${titulo}`);
+        console.log(`${i + 1} -> ${id} : ${titulo}`);
         await createPeriodico(id, titulo, areaName, null, null, revisado);
       });
     } else {
@@ -46,15 +46,12 @@ async function main(index) {
 
   for (var i = 1; i <= pages; i++) {
     console.time("Duration");
+    console.log(`\nCriando "${area.name}" - Página ${i}/${pages}`);
     await savePeriodicoByArea(area.name, i).then(() => {
-      console.log(`\nCriando "${area.name}" - Página ${i}/${pages}`);
       console.timeEnd("Duration");
     });
   }
 }
-
-// const AREA_SELECTED = 4;
-// main(AREA_SELECTED);
 
 const args = process.argv.slice(2);
 if (args.length > 0) {

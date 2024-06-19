@@ -48,8 +48,8 @@ async function main(index1, index2) {
 
     for (var j = 1; j <= pages; j++) {
       console.time("Duration");
+      console.log(`\nCriando "${area.name}" - Página ${j}/${pages}`);
       await savePeriodicoByArea(area.name, j).then(() => {
-        console.log(`\nCriando "${area.name}" - Página ${j}/${pages}`);
         console.timeEnd("Duration");
       });
     }
