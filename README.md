@@ -17,3 +17,5 @@ npm run detail 0 --> buscar pagina individual de cada periodico
 npm run dados --> gera arquivo .csv
 
 ctrl + C --> parar
+
+git pull - Recarragar git
