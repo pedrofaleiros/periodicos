@@ -63,13 +63,17 @@
 
 - gera arquivo .csv com os dados dos Periodicos
 
+### npm run servico
+
+- rodar algo manualmente
+
 ### ctrl + C
 
 - parar execução
 
 ### git pull
 
-- Recarragar git
+- Recarregar git
 
 <br>
 
@@ -86,7 +90,3 @@
 ### git push
 
 - Enviar pro repositório
-
-### npm run servico
-
-- rodar algo manualmente
