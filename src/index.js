@@ -17,7 +17,7 @@ async function main() {
 
     const areas = await listPeriodicoAreas(el.id);
     areas.forEach((area) => {
-      content += `${el.id};"${titulo}";${el.issn};"${area.areaNome}";"${linguagem}";${revisado};\n`;
+      content += `${el.id};${titulo};${el.issn};${area.areaNome};${linguagem};${revisado};\n`;
     });
     // content += `${el.id};"${titulo}";${el.issn};"AREA";"${linguagem}";${revisado};\n`;
   }
