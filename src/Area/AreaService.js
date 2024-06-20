@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import {
   createArea,
   findAreaByNome,
@@ -11,9 +12,11 @@ export async function saveAreaService(nome, total) {
     console.log(`Criando ${nome}; Total: ${total}`);
     await createArea(nome, total);
   } else if (area.total !== total) {
-    console.log(`Atualizando ${nome}; Total: ${area.total} -> ${total}`);
+    console.log(
+      chalk.green(`Atualizando ${nome}; Total: ${area.total} -> ${total}`)
+    );
     await updateArea(nome, total);
   } else {
-    console.log(`${nome} - OK`);
+    console.log(chalk.blue(`${nome} - OK`));
   }
 }

@@ -7,6 +7,7 @@ import {
   listPeriodicosByArea,
   updatePeriodicoLangAndISSN,
 } from "../repository/PeriodicoRepository.js";
+import chalk from "chalk";
 
 async function scrap(id) {
   const find = await findPeriodicoById(id);
@@ -42,34 +43,49 @@ async function scrap(id) {
   }
 }
 
-async function main(index) {
+async function main(start, end) {
   const areas = await listAreas();
 
-  if (index < 0 || index >= areas.length) {
+  if (isNaN(start) || start < 0 || start >= areas.length) {
     console.log("Numero inválido");
     return;
   }
 
-  const area = areas[index];
-  console.log(`ISSN e Linguagem - ${area.nome} - Total: ${area.total}`);
-
-  const periodicos = await listPeriodicosByArea(area.nome);
-
-  for (var i = 0; i < periodicos.length; i++) {
-    var aux = periodicos[i];
-
-    // console.log(`${i}; ${aux.id}; ${aux.titulo}`);
-    console.time("Duration");
-    console.log(`\n${i}/${periodicos.length} - Buscando "${aux.id}"`);
-    await scrap(periodicos[i].id);
-    console.timeEnd("Duration");
+  if (isNaN(end)) {
+    end = start;
+  } else {
+    if (end <= start || end >= areas.length) {
+      console.log("Numero inválido");
+      return;
+    }
   }
+
+  console.log(`Detalhar Area - ${start}${start === end ? "" : ` -> ${end}`}`);
+
+  console.time("Tempo Total");
+  for (let index = start; index <= end; index++) {
+    const area = areas[index];
+    console.log(
+      chalk.yellow(`\nISSN e Linguagem - ${area.nome} - Total: ${area.total}`)
+    );
+
+    const periodicos = await listPeriodicosByArea(area.nome);
+
+    for (var j = 0; j < periodicos.length; j++) {
+      var aux = periodicos[j];
+
+      // console.log(`${j}; ${aux.id}; ${aux.titulo}`);
+      console.time("Duration");
+      console.log(`\n${j + 1}/${periodicos.length} - Buscando "${aux.id}"`);
+      await scrap(periodicos[j].id);
+      console.timeEnd("Duration");
+    }
+  }
+  console.log("");
+  console.timeEnd("Tempo Total");
 }
 
 const args = process.argv.slice(2);
-if (args.length > 0) {
-  const number = parseInt(args[0], 10);
-  main(number);
-} else {
-  console.log("Informe o número");
-}
+const num = parseInt(args[0], 10);
+const num2 = parseInt(args[1], 10);
+main(num, num2);

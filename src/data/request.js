@@ -1,8 +1,9 @@
+import "dotenv/config";
+
 export const BASE_URL =
   "https://www-periodicos-capes-gov-br.ez106.periodicos.capes.gov.br/index.php/acervo/lista-a-z-periodicos.html";
 
-const cookie =
-  "_ga=GA1.1.503857174.1718625245; politica_cookies_portal_informada=true; f8d43d5899660e032f00f861565869ba=d5acb49fb034ea64f235b0dff66b4c93; ezproxyn=mvTs1ZZX1ib4aQ7; ezproxy=mvTs1ZZX1ib4aQ7; ezproxyl=mvTs1ZZX1ib4aQ7; _ga_DSV7MH35Q7=GS1.1.1718880479.15.1.1718880500.39.0.0";
+export const cookie = process.env.COOKIE;
 
 export const headers = {
   // Accept:

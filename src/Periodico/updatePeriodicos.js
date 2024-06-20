@@ -3,6 +3,8 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import { listAreas } from "../repository/AreaRepository.js";
 import { savePeriodico } from "./PeriodicoService.js";
+import { listPeriodicosByArea } from "../repository/PeriodicoRepository.js";
+import chalk from "chalk";
 
 async function scrap(areaNome, page) {
   const url = `${BASE_URL}?q=&source=resources&areas%5B%5D=areas%3D%3D${areaNome}&page=${page}`;
@@ -37,35 +39,52 @@ async function scrap(areaNome, page) {
   }
 }
 
-async function main(index) {
+async function main(start, end) {
   const areas = await listAreas();
 
-  if (index < 0 || index >= areas.length) {
+  if (isNaN(start) || start < 0 || start >= areas.length) {
     console.log("Numero inválido");
     return;
   }
 
-  /* 
-  TODO: se a qtd de periodicos no DB dessa area for igual ao Area.total, não precisa buscar
-   */
-
-  const area = areas[index];
-  const pages = Math.ceil(area.total / 30);
-
-  console.log(`\nCriando "${area.nome}" - Total: ${area.total}`);
-  for (var i = 1; i <= pages; i++) {
-    console.log(`\n>>> Página ${i}/${pages}`);
-
-    console.time("Duration");
-    await scrap(area.nome, i);
-    console.timeEnd("Duration");
+  if (isNaN(end)) {
+    end = start;
+  } else {
+    if (end <= start || end >= areas.length) {
+      console.log("Numero inválido");
+      return;
+    }
   }
+
+  console.log(`Atualizar Area - ${start}${start === end ? "" : ` -> ${end}`}`);
+
+  console.time("Tempo Total");
+  for (let index = start; index <= end; index++) {
+    const area = areas[index];
+    const periodicos = await listPeriodicosByArea(area.nome);
+
+    if (periodicos.length !== area.total) {
+      const pages = Math.ceil(area.total / 30);
+      console.log(
+        chalk.yellow(`\nCriando "${area.nome}" - Total: ${area.total}`)
+      );
+
+      for (let page = 1; page <= pages; page++) {
+        console.log(`\n> Página ${page}/${pages}`);
+
+        console.time("Duration");
+        await scrap(area.nome, page);
+        console.timeEnd("Duration");
+      }
+    } else {
+      console.log(chalk.blue(`\n${area.nome} - OK`));
+    }
+  }
+  console.log("");
+  console.timeEnd("Tempo Total");
 }
 
 const args = process.argv.slice(2);
-if (args.length > 0) {
-  const number = parseInt(args[0], 10);
-  main(number);
-} else {
-  console.log("Informe o número");
-}
+const num = parseInt(args[0], 10);
+const num2 = parseInt(args[1], 10);
+main(num, num2);

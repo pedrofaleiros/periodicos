@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import { listAreas } from "../repository/AreaRepository.js";
 import {
   listPeriodicos,
@@ -6,7 +7,6 @@ import {
 
 async function listByArea(areaNome) {
   const data = await listPeriodicosByArea(areaNome);
-  console.log(`Total: ${data.length} periodicos`);
   for (let i = 0; i < data.length; i++) {
     var aux = data[i];
     if (i < 5 || i > data.length - 6)
@@ -14,11 +14,11 @@ async function listByArea(areaNome) {
         `[${i}] - ${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`
       );
   }
+  console.log(chalk.green(`${areaNome} - Total: ${data.length} periodicos`));
 }
 
 async function listAll() {
   const data = await listPeriodicos();
-  console.log(`Total: ${data.length} periodicos`);
   for (let i = 0; i < data.length; i++) {
     var aux = data[i];
     if (i < 5 || i > data.length - 6)
@@ -26,10 +26,8 @@ async function listAll() {
         `[${i}] - ${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`
       );
   }
+  console.log(chalk.green(`Total: ${data.length} periodicos`));
 }
-
-//   const aux = await listAreaPeriodicos();
-//   console.log(aux.length);
 
 async function main(index) {
   if (index === null) {
