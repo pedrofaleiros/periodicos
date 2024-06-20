@@ -9,13 +9,16 @@ import {
 } from "../repository/PeriodicoRepository.js";
 import chalk from "chalk";
 
-async function scrap(id) {
+async function scrap(id, i, total) {
   const find = await findPeriodicoById(id);
   if (find === null) {
     return;
   }
 
-  if (find.linguagem === null && find.issn === null) {
+  if (find.linguagem === null || find.issn === null) {
+    console.time("Duration");
+    console.log(`${i}/${total} - ${id} - Buscando`);
+
     const url = `${BASE_URL}?task=detalhes&source=resources&id=${id}`;
 
     const response = await axios.get(url, { headers });
@@ -40,6 +43,10 @@ async function scrap(id) {
 
     // console.log(`${id}; ${updateLANG}; ${updateISSN}`);
     await updatePeriodicoLangAndISSN(id, updateISSN, updateLANG);
+    console.timeEnd("Duration");
+    console.log("");
+  } else {
+    console.log(chalk.green(`${i}/${total} - ${id} - OK`));
   }
 }
 
@@ -60,25 +67,21 @@ async function main(start, end) {
     }
   }
 
-  console.log(`Detalhar Area - ${start}${start === end ? "" : ` -> ${end}`}`);
+  console.log(`Area - ${start}${start === end ? "" : ` -> ${end}`}`);
 
   console.time("Tempo Total");
   for (let index = start; index <= end; index++) {
     const area = areas[index];
     console.log(
-      chalk.yellow(`\nISSN e Linguagem - ${area.nome} - Total: ${area.total}`)
+      chalk.yellow(`\nDetalhes - ${area.nome} - Total: ${area.total}\n`)
     );
 
     const periodicos = await listPeriodicosByArea(area.nome);
 
     for (var j = 0; j < periodicos.length; j++) {
       var aux = periodicos[j];
-
       // console.log(`${j}; ${aux.id}; ${aux.titulo}`);
-      console.time("Duration");
-      console.log(`\n${j + 1}/${periodicos.length} - Buscando "${aux.id}"`);
-      await scrap(periodicos[j].id);
-      console.timeEnd("Duration");
+      await scrap(periodicos[j].id, j + 1, periodicos.length);
     }
   }
   console.log("");
