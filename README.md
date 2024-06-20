@@ -43,14 +43,14 @@
 ### npm run per-update X Y
 
 - X obrigatorio
-- Y opicional
+- Y opcional
 - Atualiza Periodicos da area X até Y
 - exemplo: npm run per-update 0 5
 
 ### npm run per-detail X Y
 
 - X obrigatorio
-- Y opicional
+- Y opcional
 - Busca ISSN e Linguagem dos Periodicos da area X até Y
 - exemplo: npm run per-detail 0 5
 
