@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "servico": "node src/servico.js",
     "dados": "node src/index.js",
     "area-update": "node src/Area/updateAreas.js",
     "area-list": "node src/Area/listAreas.js",
@@ -19,6 +20,7 @@
     "axios": "^1.7.2",
     "chalk": "^5.3.0",
     "cheerio": "^1.0.0-rc.12",
+    "cli-progress": "^3.12.0",
     "dotenv": "^16.4.5",
     "prisma": "^5.15.0"
   }

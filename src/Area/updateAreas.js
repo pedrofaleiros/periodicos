@@ -16,7 +16,7 @@ async function scrap() {
     const id = el.attr("id");
     const parent = el.closest("div");
     if (parent.length) {
-      const idList = id.split("-");
+      const idList = id.split("-areas-");
       const nome = idList[idList.length - 1];
       const total = parseInt(parent.find("span").text().trim());
 
