@@ -17,7 +17,7 @@ async function main() {
     const per = await listPeriodicosByArea(area.nome);
     console.log(
       `${padString(`${i}`, 3)} - ${area.nome} - ${chalk.yellow(
-        `${per.length} periodicos`
+        `${per.length}`
       )}`
     );
   }
