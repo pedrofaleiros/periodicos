@@ -1,35 +1,83 @@
-git clone https://github.com/pedrofaleiros/periodicos.git
+# Configuração
 
-docker ps --> para conferir os container rodando
+1. git clone https://github.com/pedrofaleiros/periodicos.git
 
-docker-compose up -d --> subir o container caso não esteja rodando
+2. docker ps
 
-criar ".env"
+   - conferir os containers rodando
 
-npm install
+3. docker-compose up -d
 
-npx prisma migrate dev
+   - subir o container caso não esteja rodando
 
----> Pegar Cookie no scr/data/request.js
+4. criar ".env" e botar DATABASE_URL
 
-npm run show -- mostrar
+5. npm install
 
-npm run area 0 --> buscar 30 por 30 de cada area
+6. npx prisma migrate dev
+    - migração do banco de dados
 
-npm run area-loop 0 5 --> buscar 30 por 30 de cada area, da area X ate a area Y
+7. Colocar COOKIE="" no ".env"
 
-npm run detail 0 --> buscar pagina individual de cada periodico
+<br>
 
-npm run detail-loop 0 5 --> buscar pagina individual de cada periodico, da area X ate a area Y
+# Comandos
 
-npm run dados --> gera arquivo .csv
+### npm run area-list X
 
-ctrl + C --> parar
+- Pode passar ou não o X
+- Lista todas as Areas ou apenas a X
+- exemplo: npm run area-list 30
 
-git pull - --> Recarragar git
+### npm run area-update
 
----
+- Atualiza areas
 
-git add . --> add arquivo
-git commit -m "Commit" --> Vazer commit
-git push --> enviar por repositório
+### npm run per-list X
+
+- Pode passar ou não o X
+- Lista todas os Periodicos ou apenas os da area X
+- Mostra os 5 primeiros e 5 últimos
+- exemplo: npm run per-list 30
+
+### npm run per-update X Y
+
+- X obrigatorio
+- Y opicional
+- Atualiza Periodicos da area X até Y
+- exemplo: npm run per-update 0 5
+
+### npm run per-detail X Y
+
+- X obrigatorio
+- Y opicional
+- Busca ISSN e Linguagem dos Periodicos da area X até Y
+- exemplo: npm run per-detail 0 5
+
+### npm run dados
+
+- gera arquivo .csv com os dados dos Periodicos
+
+### ctrl + C
+
+- parar execução
+
+### git pull
+
+- Recarragar git
+
+<br>
+
+# Git
+
+### git add .
+
+- adicionar arquivos
+
+### git commit -m "Commit"
+
+- Fazer commit
+
+### git push
+
+- Enviar pro repositório

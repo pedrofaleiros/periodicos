@@ -9,22 +9,29 @@ async function listByArea(areaNome) {
   const data = await listPeriodicosByArea(areaNome);
   for (let i = 0; i < data.length; i++) {
     var aux = data[i];
-    if (i < 5 || i > data.length - 6)
-      console.log(
-        `[${i}] - ${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`
-      );
+    if (i < 5) {
+      console.log(`${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`);
+    }
+
+    if (i > data.length - 6 && data.length > 10) {
+      console.log(`${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`);
+    }
   }
-  console.log(chalk.blue(`${areaNome} - Total: ${data.length} periodicos`));
+  console.log(chalk.yellow(`${areaNome}`));
+  console.log(chalk.blue(`Total: ${data.length} periodicos`));
 }
 
 async function listAll() {
   const data = await listPeriodicos();
   for (let i = 0; i < data.length; i++) {
     var aux = data[i];
-    if (i < 5 || i > data.length - 6)
-      console.log(
-        `[${i}] - ${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`
-      );
+    if (i < 5) {
+      console.log(`${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`);
+    }
+
+    if (i > data.length - 6 && data.length > 10) {
+      console.log(`${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`);
+    }
   }
   console.log(chalk.blue(`Total: ${data.length} periodicos`));
 }

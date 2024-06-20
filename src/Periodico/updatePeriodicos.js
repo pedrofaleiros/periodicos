@@ -67,7 +67,7 @@ async function main(start, end) {
       const pages = Math.ceil(area.total / 30);
       console.log(
         chalk.yellow(
-          `\n[${index}] - Criando "${area.nome}" - Total: ${area.total}`
+          `\n[${index}] - "${area.nome}" - Total: ${area.total}`
         )
       );
 
