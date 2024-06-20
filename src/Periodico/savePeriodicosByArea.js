@@ -45,6 +45,10 @@ async function main(index) {
     return;
   }
 
+  /* 
+  TODO: se a qtd de periodicos no DB dessa area for igual ao Area.total, não precisa buscar
+   */
+
   const area = areas[index];
   const pages = Math.ceil(area.total / 30);
 

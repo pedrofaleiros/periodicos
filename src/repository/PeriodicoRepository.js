@@ -25,7 +25,9 @@ export async function updatePeriodicoLangAndISSN(id, issn, lang) {
 }
 
 export async function listPeriodicos() {
-  return await prismaClient.periodico.findMany();
+  return await prismaClient.periodico.findMany({
+    orderBy: { titulo: "asc" },
+  });
 }
 
 export async function listPeriodicosByArea(areaNome) {
@@ -37,5 +39,6 @@ export async function listPeriodicosByArea(areaNome) {
         },
       },
     },
+    orderBy: { titulo: "asc" },
   });
 }

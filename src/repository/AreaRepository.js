@@ -21,5 +21,7 @@ export async function updateArea(nome, total) {
 }
 
 export async function listAreas() {
-  return await prismaClient.area.findMany();
+  return await prismaClient.area.findMany({
+    orderBy: { total: "desc" },
+  });
 }
