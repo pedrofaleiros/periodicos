@@ -66,7 +66,9 @@ async function main(start, end) {
     if (periodicos.length !== area.total) {
       const pages = Math.ceil(area.total / 30);
       console.log(
-        chalk.yellow(`\nCriando "${area.nome}" - Total: ${area.total}`)
+        chalk.yellow(
+          `\n[${index}] - Criando "${area.nome}" - Total: ${area.total}`
+        )
       );
 
       for (let page = 1; page <= pages; page++) {
@@ -77,7 +79,7 @@ async function main(start, end) {
         console.timeEnd("Duration");
       }
     } else {
-      console.log(chalk.blue(`\n${area.nome} - OK`));
+      console.log(chalk.green(`\n[${index}] - ${area.nome} - OK`));
     }
   }
   console.log("");

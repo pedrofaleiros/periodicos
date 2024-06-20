@@ -14,7 +14,7 @@ async function listByArea(areaNome) {
         `[${i}] - ${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`
       );
   }
-  console.log(chalk.green(`${areaNome} - Total: ${data.length} periodicos`));
+  console.log(chalk.blue(`${areaNome} - Total: ${data.length} periodicos`));
 }
 
 async function listAll() {
@@ -26,7 +26,7 @@ async function listAll() {
         `[${i}] - ${aux.id}; ${aux.titulo}; ${aux.issn}; ${aux.linguagem}`
       );
   }
-  console.log(chalk.green(`Total: ${data.length} periodicos`));
+  console.log(chalk.blue(`Total: ${data.length} periodicos`));
 }
 
 async function main(index) {

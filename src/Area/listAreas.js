@@ -8,7 +8,7 @@ async function main(index) {
     for (let i = 0; i < data.length; i++) {
       console.log(`${data[i].nome}: ${data[i].total}`);
     }
-    console.log(chalk.green(`\nTotal: ${data.length} areas`));
+    console.log(chalk.blue(`\nTotal: ${data.length} areas`));
   } else if (number >= 0 && number < data.length) {
     console.log(`${data[index].nome}: ${data[index].total}`);
   }

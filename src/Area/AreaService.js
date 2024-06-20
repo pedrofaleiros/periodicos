@@ -13,10 +13,10 @@ export async function saveAreaService(nome, total) {
     await createArea(nome, total);
   } else if (area.total !== total) {
     console.log(
-      chalk.green(`Atualizando ${nome}; Total: ${area.total} -> ${total}`)
+      chalk.blue(`Atualizando ${nome}; Total: ${area.total} -> ${total}`)
     );
     await updateArea(nome, total);
   } else {
-    console.log(chalk.blue(`${nome} - OK`));
+    console.log(chalk.green(`${nome} - OK`));
   }
 }
