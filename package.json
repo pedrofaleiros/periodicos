@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "per-count": "node src/Periodico/countByArea.js",
     "servico": "node src/servico.js",
     "dados": "node src/index.js",
     "area-update": "node src/Area/updateAreas.js",
