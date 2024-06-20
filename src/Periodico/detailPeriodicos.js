@@ -72,16 +72,16 @@ async function main(start, end) {
   console.time("Tempo Total");
   for (let index = start; index <= end; index++) {
     const area = areas[index];
-    console.log(
-      chalk.yellow(`\nDetalhes - ${area.nome} - Total: ${area.total}\n`)
-    );
-
     const periodicos = await listPeriodicosByArea(area.nome);
+
+    console.log(
+      chalk.yellow(`\nDetalhes - ${area.nome} - Total: ${periodicos.length}\n`)
+    );
 
     for (var j = 0; j < periodicos.length; j++) {
       var aux = periodicos[j];
       // console.log(`${j}; ${aux.id}; ${aux.titulo}`);
-      await scrap(periodicos[j].id, j + 1, periodicos.length);
+      await scrap(aux.id, j + 1, periodicos.length);
     }
   }
   console.log("");
