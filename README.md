@@ -81,3 +81,6 @@
 ### git push
 
 - Enviar pro repositório
+
+### npm run servico
+- rodar algo manualmente
