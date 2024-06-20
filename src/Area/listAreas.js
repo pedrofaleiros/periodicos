@@ -6,7 +6,7 @@ async function main(index) {
 
   if (index === null) {
     for (let i = 0; i < data.length; i++) {
-      console.log(`${data[i].nome}: ${data[i].total}`);
+      console.log(`[${i}] ${data[i].nome}: ${data[i].total}`);
     }
     console.log(chalk.blue(`\nTotal: ${data.length} areas`));
   } else if (number >= 0 && number < data.length) {
