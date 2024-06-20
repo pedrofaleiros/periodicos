@@ -5,6 +5,13 @@ export const BASE_URL =
 
 export const cookie = process.env.COOKIE;
 
+function getCookie() {
+  if (!cookie) {
+    throw new Error("Informe o Cookie");
+  }
+  return cookie;
+}
+
 export const headers = {
   // Accept:
   //   "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
@@ -12,7 +19,7 @@ export const headers = {
   // "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
   // "Cache-Control": "max-age=0",
   // Connection: "keep-alive",
-  Cookie: cookie,
+  Cookie: getCookie(),
   // Host: "www-periodicos-capes-gov-br.ez106.periodicos.capes.gov.br",
   // Referer: "https://www-periodicos-capes-gov-br.ez106.periodicos.capes.gov.br/",
   // "Sec-Fetch-Dest": "document",
