@@ -12,7 +12,7 @@ async function main() {
 
   const progressBar = new cliProgress.SingleBar(
     {
-      format: "{bar} | {percentage}% | {value}/{total} periodicos",
+      format: "{bar} | {percentage}% ",
     },
     cliProgress.Presets.shades_classic
   );
@@ -29,10 +29,10 @@ async function main() {
     areas.forEach((area) => {
       content += `${el.id};${titulo};${el.issn};${area.areaNome};${linguagem};${revisado};\n`;
     });
-    // content += `${el.id};"${titulo}";${el.issn};"AREA";"${linguagem}";${revisado};\n`;
     progressBar.update(i);
   }
-
+  
+  progressBar.update(data.length);
   progressBar.stop();
 
   fs.writeFile(fileName, content, function (err) {

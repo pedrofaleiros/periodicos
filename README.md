@@ -15,7 +15,8 @@
 5. npm install
 
 6. npx prisma migrate dev
-    - migração do banco de dados
+
+   - migração do banco de dados
 
 7. Colocar COOKIE="" no ".env"
 
@@ -54,9 +55,17 @@
 - Busca ISSN e Linguagem dos Periodicos da area X até Y
 - exemplo: npm run per-detail 0 5
 
+### npm run per-count
+
+- Mostra a contagem dos periodicos de cada area
+
 ### npm run dados
 
 - gera arquivo .csv com os dados dos Periodicos
+
+### npm run servico
+
+- rodar algo manualmente
 
 ### ctrl + C
 
@@ -64,7 +73,7 @@
 
 ### git pull
 
-- Recarragar git
+- Recarregar git
 
 <br>
 
@@ -81,6 +90,3 @@
 ### git push
 
 - Enviar pro repositório
-
-### npm run servico
-- rodar algo manualmente
