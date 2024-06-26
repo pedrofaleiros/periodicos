@@ -39,7 +39,7 @@ async function scrap(areaNome, page) {
   }
 }
 
-async function main(start, end) {
+async function main(start, end, forceUpdate) {
   const areas = await listAreas();
 
   if (isNaN(start) || start < 0 || start >= areas.length) {
@@ -65,7 +65,7 @@ async function main(start, end) {
     const area = areas[index];
     const periodicos = await listPeriodicosByArea(area.nome);
 
-    if (periodicos.length !== area.total) {
+    if (periodicos.length !== area.total || forceUpdate) {
       const pages = Math.ceil(area.total / 30);
       console.log(
         chalk.yellow(`\n[${index}] - "${area.nome}" - Total: ${area.total}`)
@@ -86,7 +86,19 @@ async function main(start, end) {
   console.timeEnd("Tempo Total");
 }
 
+import readline from "readline";
+
 const args = process.argv.slice(2);
 const num = parseInt(args[0], 10);
 const num2 = parseInt(args[1], 10);
-main(num, num2);
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question(chalk.redBright("Forçar atualização? (y): "), (answer) => {
+  const forceUpdate = answer;
+  main(num, num2, forceUpdate === "y");
+  rl.close();
+});
