@@ -59,6 +59,10 @@
 
 - Mostra a contagem dos periodicos de cada area
 
+### npm run portal-issn X Y
+
+### npm run portal-issn-list X
+
 ### npm run dados
 
 - gera arquivo .csv com os dados dos Periodicos

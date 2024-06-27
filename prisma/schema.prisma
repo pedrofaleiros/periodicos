@@ -36,3 +36,14 @@ model AreaPeriodico {
 
   @@unique([periodicoId, areaNome])
 }
+
+model PortalIssnPeriodico {
+  issn String @unique
+
+  title      String?
+  otherTitle String?
+  subject    String?
+  language   String?
+  country    String?
+  publisher  String?
+}
