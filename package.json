@@ -12,7 +12,9 @@
     "area-list": "node src/Area/listAreas.js",
     "per-update": "node src/Periodico/updatePeriodicos.js",
     "per-detail": "node src/Periodico/detailPeriodicos.js",
-    "per-list": "node src/Periodico/listPeriodicos.js"
+    "per-list": "node src/Periodico/listPeriodicos.js",
+    "portal-issn": "node src/Issn-Portal/index.js",
+    "portal-issn-list": "node src/Issn-Portal/list.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +24,7 @@
     "chalk": "^5.3.0",
     "cheerio": "^1.0.0-rc.12",
     "cli-progress": "^3.12.0",
+    "csv-parser": "^3.0.0",
     "dotenv": "^16.4.5",
     "prisma": "^5.15.0"
   }
