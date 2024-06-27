@@ -38,9 +38,7 @@ const headers = {
 async function readCSV() {
   return new Promise((resolve, reject) => {
     const results = [];
-    fs.createReadStream(
-      "C:/Users/pedro.000/Documents/codes/periodicos/ISSNPubliArtigos2000-2024.csv"
-    )
+    fs.createReadStream("ISSNPubliArtigos2000-2024.csv")
       .pipe(csv({ separator: ";" }))
       .on("data", (data) => {
         results.push(data["CASEWHENSUBSTR(ART.TXT_ISSN_IS"]);
