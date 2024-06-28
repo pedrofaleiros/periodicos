@@ -14,7 +14,8 @@
     "per-detail": "node src/Periodico/detailPeriodicos.js",
     "per-list": "node src/Periodico/listPeriodicos.js",
     "portal-issn": "node src/Issn-Portal/index.js",
-    "portal-issn-list": "node src/Issn-Portal/list.js"
+    "portal-issn-list": "node src/Issn-Portal/list.js",
+    "portal-issn-dados": "node src/Issn-Portal/export.js"
   },
   "author": "",
   "license": "ISC",

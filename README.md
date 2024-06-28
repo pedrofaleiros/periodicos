@@ -61,6 +61,11 @@
 
 ### npm run portal-issn X Y
 
+- Pega os ISSN's do arquivo .csv
+- Busca no portal issn do X ao Y
+- X obrigatório
+- Y opcional
+
 ### npm run portal-issn-list X
 
 ### npm run dados
