@@ -68,6 +68,14 @@
 
 ### npm run portal-issn-list X
 
+- Lista periódicos cadastrados do portal issn
+- X opcional
+- Se passar X, mostra detalhadamente o X° periódico
+
+### npm run portal-issn-dados
+
+- gera arquivo .csv com os dados dos Periodicos do Portal ISSN
+
 ### npm run dados
 
 - gera arquivo .csv com os dados dos Periodicos

@@ -97,7 +97,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-rl.question(chalk.redBright("Forçar atualização? (y): "), (answer) => {
+rl.question(chalk.greenBright("Forçar atualização? (y): "), (answer) => {
   const forceUpdate = answer;
   main(num, num2, forceUpdate === "y");
   rl.close();
